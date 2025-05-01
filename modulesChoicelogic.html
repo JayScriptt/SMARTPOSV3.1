@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Radio Button Modules (Active Color)</title>
+    <link rel="stylesheet" href="/src/output.css" />
+    <link rel="stylesheet" href="/src/input.css" />
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col items-center p-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">Choose a Module</h1>
+
+    <div id="orderCategory" class="flex flex-wrap gap-3">
+      <div>
+        <input
+          type="radio"
+          id="milktea_module"
+          name="module"
+          class="hidden peer"
+          checked
+          onclick="showModule('milktea')"
+        />
+        <label
+          for="milktea_module"
+          class="flex items-center justify-between cursor-pointer px-4 py-2 bg-black hover:bg-[#000000] text-white rounded-lg peer-checked:bg-white peer-checked:text-[#df927f] transition-all"
+        >
+          <span>MILK TEA</span>
+          <span id="milktea-span" class="text-sm"></span>
+        </label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="fruittea_module"
+          name="module"
+          class="hidden peer"
+          onclick="showModule('fruittea')"
+        />
+        <label
+          for="fruittea_module"
+          class="flex items-center justify-between cursor-pointer px-4 py-2 bg-[#df927f] hover:bg-[#f5c5ba] text-white rounded-lg peer-checked:bg-white peer-checked:text-[#df927f] transition-all"
+        >
+          <span>FRUIT TEA</span>
+          <span id="fruittea-span" class="text-sm"></span>
+        </label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="hotbrew_module"
+          name="module"
+          class="hidden peer"
+          onclick="showModule('hotbrew')"
+        />
+        <label
+          for="hotbrew_module"
+          class="flex items-center justify-between cursor-pointer px-4 py-2 bg-[#df927f] hover:bg-[#f5c5ba] text-white rounded-lg peer-checked:bg-white peer-checked:text-[#df927f] transition-all"
+        >
+          <span>HOT BREW</span>
+          <span id="hotbrew-span" class="text-sm"></span>
+        </label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="praf_module"
+          name="module"
+          class="hidden peer"
+          onclick="showModule('praf')"
+        />
+        <label
+          for="praf_module"
+          class="flex items-center justify-between cursor-pointer px-4 py-2 bg-[#df927f] hover:bg-[#f5c5ba] text-white rounded-lg peer-checked:bg-white peer-checked:text-[#df927f] transition-all"
+        >
+          <span>PRAF</span>
+          <span id="praf-span" class="text-sm"></span>
+        </label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="icedcoffee_module"
+          name="module"
+          class="hidden peer"
+          onclick="showModule('icedcoffee')"
+        />
+        <label
+          for="icedcoffee_module"
+          class="flex items-center justify-between cursor-pointer px-4 py-2 bg-[#df927f] hover:bg-[#f5c5ba] text-white rounded-lg peer-checked:bg-white peer-checked:text-[#df927f] transition-all"
+        >
+          <span>ICED COFFEE</span>
+          <span id="icedcoffee-span" class="text-sm"></span>
+        </label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="promos_module"
+          name="module"
+          class="hidden peer"
+          onclick="showModule('promos')"
+        />
+        <label
+          for="promos_module"
+          class="flex items-center justify-between cursor-pointer px-4 py-2 bg-[#df927f] hover:bg-[#f5c5ba] text-white rounded-lg peer-checked:bg-white peer-checked:text-[#df927f] transition-all"
+        >
+          <span>PROMOS</span>
+          <span id="promos-span" class="text-sm"></span>
+        </label>
+      </div>
+    </div>
+    <!-- Module content -->
+    <div class="mt-8">
+      <div
+        id="milktea-content"
+        class="hidden p-6 bg-white rounded-md shadow-md"
+      >
+        MILK TEA Content
+      </div>
+      <div
+        id="fruittea-content"
+        class="hidden p-6 bg-white rounded-md shadow-md"
+      >
+        FRUIT TEA Content
+      </div>
+      <div
+        id="hotbrew-content"
+        class="hidden p-6 bg-white rounded-md shadow-md"
+      >
+        HOT BREW Content
+      </div>
+      <div id="praf-content" class="hidden p-6 bg-white rounded-md shadow-md">
+        PRAF Content
+      </div>
+      <div
+        id="icedcoffee-content"
+        class="hidden p-6 bg-white rounded-md shadow-md"
+      >
+        ICED COFFEE Content
+      </div>
+      <div id="promos-content" class="hidden p-6 bg-white rounded-md shadow-md">
+        PROMOS Content
+      </div>
+    </div>
+
+    <script>
+      function showModule(moduleId) {
+        // Hide all contents first
+        const modules = [
+          "milktea",
+          "fruittea",
+          "hotbrew",
+          "praf",
+          "icedcoffee",
+          "promos",
+        ];
+        modules.forEach((module) => {
+          document.getElementById(`${module}-content`).classList.add("hidden");
+          document.getElementById(`${module}-span`).textContent = "";
+
+          // Reset all label backgrounds to white
+          document
+            .querySelector(`label[for="${module}_module"]`)
+            .classList.remove("bg-green-200", "bg-red-200");
+          document
+            .querySelector(`label[for="${module}_module"]`)
+            .classList.add("bg-white");
+        });
+
+        // Show selected content
+        document
+          .getElementById(`${moduleId}-content`)
+          .classList.remove("hidden");
+        document.getElementById(`${moduleId}-span`).textContent = "";
+
+        // Change background color
+        const selectedLabel = document.querySelector(
+          `label[for="${moduleId}_module"]`
+        );
+        selectedLabel.classList.remove("bg-white");
+        if (moduleId === "milktea") {
+          selectedLabel.classList.add("bg-green-200");
+        } else {
+          selectedLabel.classList.add("bg-red-200");
+        }
+      }
+
+      // Default to MILK TEA on load
+      window.onload = function () {
+        showModule("milktea");
+      };
+    </script>
+  </body>
+</html>
