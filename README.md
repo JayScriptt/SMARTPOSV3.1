@@ -29,3 +29,4 @@
               Addons Content
             </div>
 "# SMARTPOSV3.1" 
+"# SMARTPOSV4" 
